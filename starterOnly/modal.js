@@ -15,8 +15,14 @@ const close = document.querySelector(".close")
 const btnSubmit = document.querySelector(".btn-submit");
 const modalWindow = document.querySelector('.modal-body')
 const thankMessage = document.getElementById("thank")
-console.log(thankMessage);
-console.log(modalWindow);
+const firstName = document.getElementById('first')
+const lastName = document.getElementById('last')
+const email = document.getElementById('email')
+const birth = document.getElementById('bithdate')
+const radio = document.getElementById('quantity')
+
+console.log(firstName);
+console.log(lastName);
 console.log(btnSubmit);
 
 
@@ -27,13 +33,15 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
+// close modal form
   close.addEventListener("click",function(){
   modalbg.style.display = "none";
   })
 
-  btnSubmit.addEventListener('click',function(){
-
+  btnSubmit.addEventListener('click',(e)=>{
+    e.preventDefault()
+    modalWindow.classList.remove('formData')
+    thankMessage.style.display = 'block'
   })
 
 

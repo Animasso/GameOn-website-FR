@@ -524,7 +524,7 @@ footer {
   font-style: italic;
 }
 #thank {
-  display: none;
+  visibility: hidden;
   height: 100%;
   text-align: center;
   display: flex;
