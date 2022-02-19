@@ -20,10 +20,11 @@ const lastName = document.getElementById('last')
 const email = document.getElementById('email')
 const birth = document.getElementById('bithdate')
 const radio = document.getElementById('quantity')
+const closeThanks = document.querySelector('.closeMgs')
 
 console.log(firstName);
 console.log(lastName);
-console.log(btnSubmit);
+console.log(closeThanks);
 
 
 // launch modal event
@@ -38,6 +39,8 @@ function launchModal() {
   modalbg.style.display = "none";
   })
 
+  
+//faire apparaitre le message de remerciment apres submission
   btnSubmit.addEventListener('click',(e)=>{
     e.preventDefault()
     modalWindow.classList.remove('formData')
@@ -45,3 +48,7 @@ function launchModal() {
   })
 
 
+//fermerture du message remerciment
+closeThanks.addEventListener('click',function () {
+  modalbg.style.display = "none"
+})
