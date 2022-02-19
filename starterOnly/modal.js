@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close")
 const btnSubmit = document.querySelector(".btn-submit");
-const modalWindow = document.querySelector('.modal-body')
+const modalWindow = document.getElementById('reserve')
 const thankMessage = document.getElementById("thank")
 const firstName = document.getElementById('first')
 const lastName = document.getElementById('last')
@@ -22,7 +22,7 @@ const birth = document.getElementById('bithdate')
 const radio = document.getElementById('quantity')
 const closeThanks = document.querySelector('.closeMgs')
 
-console.log(firstName);
+console.log(modalWindow);
 console.log(lastName);
 console.log(closeThanks);
 
@@ -43,8 +43,9 @@ function launchModal() {
 //faire apparaitre le message de remerciment apres submission
   btnSubmit.addEventListener('click',(e)=>{
     e.preventDefault()
-    modalWindow.classList.remove('formData')
-    thankMessage.style.display = 'block'
+    
+    modalWindow.style.display ="none"
+    thankMessage.style.visibility = 'visible'
   })
 
 
