@@ -45,7 +45,7 @@ function launchModal() {
     e.preventDefault()
     
     modalWindow.style.display ="none"
-    thankMessage.style.visibility = 'visible'
+    thankMessage.style.display ="block"
   })
 
 
