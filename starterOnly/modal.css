@@ -523,6 +523,14 @@ footer {
   color: red;
   font-style: italic;
 }
+#errorFirst,
+#errorLast,
+#errorEmail,
+#errorBirth,
+#errorSelect,
+#errorCondition {
+  display: none;
+}
 
 #thank {
   display: none;
