@@ -528,7 +528,8 @@ footer {
 #errorEmail,
 #errorBirth,
 #errorSelect,
-#errorCondition {
+#errorCondition,
+#errorRadio {
   display: none;
 }
 
