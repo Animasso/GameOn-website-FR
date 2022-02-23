@@ -14,20 +14,22 @@ const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close")
 const btnSubmit = document.querySelector(".btn-submit");
 const modalWindow = document.getElementById('reserve')
+const closeThanks = document.querySelector('.closeMgs')
 const thankMessage = document.getElementById("thank")
 
 const firstName = document.getElementById('first')
 const lastName = document.getElementById('last')
 const email = document.getElementById('email')
 const birth = document.getElementById('bithdate')
-const radio = document.getElementById('quantity')
-const closeThanks = document.querySelector('.closeMgs')
+const quantity = document.getElementById('quantity')
+const localisation = document.getElementById('localisation')
+const conditionCheck = document.getElementById ('checkbox1')
 
 const firstError = document.getElementById('errorFirst');
 const lastError = document.getElementById('errorLast');
 const emailError = document.getElementById('errorEmail');
 const birthdateError = document.getElementById('errorBirth');
-const quantityError = document.getElementById('errorSelect');
+const quantityError = document.getElementById('errorQuantity');
 const locationsError = document.getElementById('errorRadio');
 const conditionError = document.getElementById('errorCondition');
 
@@ -38,17 +40,6 @@ console.log(birthdateError);
 console.log(quantityError);
 console.log(locationsError);
 console.log(conditionError);
-
-
-
-
-
-
-
-
-
-
-
 
 
 // launch modal event
@@ -63,26 +54,50 @@ function launchModal() {
   modalbg.style.display = "none";
   })
 
-  
-
-
-
-
-
-
 modalWindow.addEventListener('submit',(e) => {
     e.preventDefault();
-    let firstIsValid = false;
-    const firstNameValue = firstName.value;
+
+    let formIsValid = true;
+    let firstNameValue = firstName.value;
+    let lastNameValue = lastName.value
+    let birthValue = birth.value
+    let quantityValue = radio.value
+    let emailValue = email.value
+    let localisationValue = location.value
+    const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
     console.log(firstNameValue);
 
-    if (firstNameValue != '' && firstNameValue.length >= 2) {
-      firstIsValid = true;
-    } else {
+    if ( firstNameValue.length < 2) {
       firstError.style.display = "block";
+      formIsValid =false
     }
-
-
+    if ( lastNameValue.length < 2) {
+      lastError.style.display = "block";
+      formIsValid =false
+    }
+    if (emailFormat.test(!emailValue)) {
+      emailError.style.display ="block";
+      formIsValid =false
+    }
+    if (birthValue.length < 8) {
+      birthdateError.style.display ="block"
+      formIsValid = false
+    }
+    if (quantityValue.length < 0 ) {
+      quantityError.style.display ="block"
+      formIsValid = false
+    }
+    if(!checkbox1.checked) {
+      conditionError.style.display ="block"
+      formIsValid = false;
+    }
+    if (localisationValue.length < 1) {
+      locationsError.style.display = "block"
+      formIsValid =false
+    }
+    if(formIsValid= true){
+      validThanks(e)
+    }
   })
 
 //fermerture du message remerciment
@@ -91,9 +106,9 @@ closeThanks.addEventListener('click',function () {
 })
 
 //faire apparaitre le message de remerciment apres submission
-btnSubmit.addEventListener('click',(e)=>{
+function validThanks(e){
   e.preventDefault()
   
   modalWindow.style.display ="none"
   thankMessage.style.display ="block"
-})
+}
