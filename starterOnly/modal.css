@@ -527,7 +527,7 @@ footer {
 #errorLast,
 #errorEmail,
 #errorBirth,
-#errorSelect,
+#errorQuantity,
 #errorCondition,
 #errorRadio {
   display: none;

@@ -20,26 +20,19 @@ const thankMessage = document.getElementById("thank")
 const firstName = document.getElementById('first')
 const lastName = document.getElementById('last')
 const email = document.getElementById('email')
-const birth = document.getElementById('bithdate')
+const birth = document.getElementById('birthdate')
 const quantity = document.getElementById('quantity')
-const localisation = document.getElementById('localisation')
+const localisation = document.querySelectorAll("input[name='localisation']") 
 const conditionCheck = document.getElementById ('checkbox1')
-
+console.log(localisation);
 const firstError = document.getElementById('errorFirst');
 const lastError = document.getElementById('errorLast');
 const emailError = document.getElementById('errorEmail');
-const birthdateError = document.getElementById('errorBirth');
+const birthDateError = document.getElementById('errorBirth');
 const quantityError = document.getElementById('errorQuantity');
 const locationsError = document.getElementById('errorRadio');
 const conditionError = document.getElementById('errorCondition');
 
-console.log(firstName);
-console.log(lastError);
-console.log(emailError);
-console.log(birthdateError);
-console.log(quantityError);
-console.log(locationsError);
-console.log(conditionError);
 
 
 // launch modal event
@@ -61,41 +54,77 @@ modalWindow.addEventListener('submit',(e) => {
     let firstNameValue = firstName.value;
     let lastNameValue = lastName.value
     let birthValue = birth.value
-    let quantityValue = radio.value
+    let quantityValue = quantity.value
     let emailValue = email.value
-    let localisationValue = location.value
+    let localisationValue = localisation.value
+
     const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
     console.log(firstNameValue);
 
     if ( firstNameValue.length < 2) {
       firstError.style.display = "block";
       formIsValid =false
+    }else{
+      firstError.style.display = "none";
     }
-    if ( lastNameValue.length < 2) {
+
+    if ( lastNameValue.length < 2 ) {
       lastError.style.display = "block";
       formIsValid =false
+    }else{
+      lastError.style.display = "none";
     }
-    if (emailFormat.test(!emailValue)) {
+
+    if (!emailFormat.test(emailValue)) {
       emailError.style.display ="block";
       formIsValid =false
+    }else{
+      emailError.style.display = "none";
     }
-    if (birthValue.length < 8) {
-      birthdateError.style.display ="block"
+
+
+    let today = new Date()
+    console.log(today);
+
+    if (birthValue <= today) {
+      birthDateError.style.display ="block"
       formIsValid = false
+    }else{
+      birthDateError.style.display = "none";
     }
-    if (quantityValue.length < 0 ) {
+
+    if (quantityValue.length < 1 ) {
       quantityError.style.display ="block"
       formIsValid = false
+    }else{
+      quantityError.style.display = "none";
     }
     if(!checkbox1.checked) {
       conditionError.style.display ="block"
       formIsValid = false;
+    }else{
+      conditionError.style.display = "none";
     }
-    if (localisationValue.length < 1) {
+    
+    /*if (!localisation.value (location1 || location2 || location3 || location4 || location5 || location6) ) {
       locationsError.style.display = "block"
       formIsValid =false
+    }else{
+      locationsError.style.display = "none"
     }
-    if(formIsValid= true){
+
+   */
+
+    
+    console.log(firstNameValue);
+    console.log(lastNameValue);
+    console.log(emailValue);
+    console.log(birthValue);
+    console.log(quantityValue);
+    console.log(localisationValue);
+
+
+    if(formIsValid === true){
       validThanks(e)
     }
   })
@@ -108,7 +137,6 @@ closeThanks.addEventListener('click',function () {
 //faire apparaitre le message de remerciment apres submission
 function validThanks(e){
   e.preventDefault()
-  
   modalWindow.style.display ="none"
   thankMessage.style.display ="block"
 }
