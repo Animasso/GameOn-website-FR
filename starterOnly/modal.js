@@ -22,9 +22,9 @@ const lastName = document.getElementById('last')
 const email = document.getElementById('email')
 const birth = document.getElementById('birthdate')
 const quantity = document.getElementById('quantity')
-const localisation = document.querySelectorAll("input[name='localisation']") 
+const localisation = document.querySelectorAll("input[name='location']:checked")
 const conditionCheck = document.getElementById ('checkbox1')
-console.log(localisation);
+
 const firstError = document.getElementById('errorFirst');
 const lastError = document.getElementById('errorLast');
 const emailError = document.getElementById('errorEmail');
@@ -56,7 +56,8 @@ modalWindow.addEventListener('submit',(e) => {
     let birthValue = birth.value
     let quantityValue = quantity.value
     let emailValue = email.value
-    let localisationValue = localisation.value
+    let localisation = document.querySelectorAll("input[name='location']:checked")
+    
 
     const emailFormat = /^[a-z0-9.-]{2,}@+[a-z0-9.-]{2,}$/i;
     console.log(firstNameValue);
@@ -83,13 +84,13 @@ modalWindow.addEventListener('submit',(e) => {
     }
 
 
-    let today = new Date()
+    let today = new Date().toLocaleDateString()
     console.log(today);
-
-    if (birthValue <= today) {
+    if (today >= birthValue){
       birthDateError.style.display ="block"
       formIsValid = false
-    }else{
+    }
+    else{
       birthDateError.style.display = "none";
     }
 
@@ -99,6 +100,14 @@ modalWindow.addEventListener('submit',(e) => {
     }else{
       quantityError.style.display = "none";
     }
+
+    if (!location1.value && !location2.value && !location3.value && !location4.value && !location5.value && !location6.value){
+      locationsError.style.display = "block"
+      formIsValid =false
+    }else{
+      locationsError.style.display = "none"
+    }
+
     if(!checkbox1.checked) {
       conditionError.style.display ="block"
       formIsValid = false;
@@ -106,22 +115,14 @@ modalWindow.addEventListener('submit',(e) => {
       conditionError.style.display = "none";
     }
     
-    /*if (!localisation.value (location1 || location2 || location3 || location4 || location5 || location6) ) {
-      locationsError.style.display = "block"
-      formIsValid =false
-    }else{
-      locationsError.style.display = "none"
-    }
 
-   */
-
-    
     console.log(firstNameValue);
     console.log(lastNameValue);
     console.log(emailValue);
     console.log(birthValue);
     console.log(quantityValue);
-    console.log(localisationValue);
+    console.log(localisation);
+   
 
 
     if(formIsValid === true){
