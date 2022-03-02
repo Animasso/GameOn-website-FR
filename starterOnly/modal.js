@@ -94,7 +94,7 @@ modalWindow.addEventListener('submit',(e) => {
       birthDateError.style.display = "none";
     }
 
-    if (quantityValue.length < 1 ) {
+    if (quantityValue.length <= 0 ) {
       quantityError.style.display ="block"
       formIsValid = false
     }else{
