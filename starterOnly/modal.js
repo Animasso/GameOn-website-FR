@@ -84,9 +84,10 @@ modalWindow.addEventListener('submit',(e) => {
     }
 
 
-    let today = new Date().toLocaleDateString()
+    let today = new Date()
     console.log(today);
-    if (today >= birthValue){
+    console.log(birthValue);
+    if (birthValue == ''){
       birthDateError.style.display ="block"
       formIsValid = false
     }
@@ -100,12 +101,16 @@ modalWindow.addEventListener('submit',(e) => {
     }else{
       quantityError.style.display = "none";
     }
+    console.log(location1.checked,location2.checked , location3.checked , location4.checked , location5.checked, location6.checked)
 
-    if (!location1.value && !location2.value && !location3.value && !location4.value && !location5.value && !location6.value){
+    if (location1.checked || location2.checked ||location3.checked || location4.checked || location5.checked || location6.checked){
+      locationsError.style.display = "none"
+      console.log('location hide')
+    }else{
       locationsError.style.display = "block"
       formIsValid =false
-    }else{
-      locationsError.style.display = "none"
+      console.log('location display error');
+      
     }
 
     if(!checkbox1.checked) {
