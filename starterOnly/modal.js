@@ -45,6 +45,7 @@ function launchModal() {
 // close modal form
   close.addEventListener("click",function(){
   modalbg.style.display = "none";
+  
   })
 
 modalWindow.addEventListener('submit',(e) => {
@@ -101,16 +102,12 @@ modalWindow.addEventListener('submit',(e) => {
     }else{
       quantityError.style.display = "none";
     }
-    console.log(location1.checked,location2.checked , location3.checked , location4.checked , location5.checked, location6.checked)
 
     if (location1.checked || location2.checked ||location3.checked || location4.checked || location5.checked || location6.checked){
       locationsError.style.display = "none"
-      console.log('location hide')
     }else{
       locationsError.style.display = "block"
       formIsValid =false
-      console.log('location display error');
-      
     }
 
     if(!checkbox1.checked) {
@@ -120,15 +117,12 @@ modalWindow.addEventListener('submit',(e) => {
       conditionError.style.display = "none";
     }
     
-
     console.log(firstNameValue);
     console.log(lastNameValue);
     console.log(emailValue);
     console.log(birthValue);
     console.log(quantityValue);
     console.log(localisation);
-   
-
 
     if(formIsValid === true){
       validThanks(e)
@@ -138,6 +132,9 @@ modalWindow.addEventListener('submit',(e) => {
 //fermerture du message remerciment
 closeThanks.addEventListener('click',function () {
   modalbg.style.display = "none"
+  modalWindow.style.display = "block";
+  thankMessage.style.display ="none"
+  modalWindow.reset()
 })
 
 //faire apparaitre le message de remerciment apres submission
