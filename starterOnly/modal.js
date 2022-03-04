@@ -45,7 +45,9 @@ function launchModal() {
 // close modal form
   close.addEventListener("click",function(){
   modalbg.style.display = "none";
-  
+  modalWindow.style.display = "block";
+  thankMessage.style.display ="none"
+  modalWindow.reset()
   })
 
 modalWindow.addEventListener('submit',(e) => {
@@ -129,7 +131,7 @@ modalWindow.addEventListener('submit',(e) => {
     }
   })
 
-//fermerture du message remerciment
+//fermerture du message remerciment et reset du formulaire sans les valeurs
 closeThanks.addEventListener('click',function () {
   modalbg.style.display = "none"
   modalWindow.style.display = "block";
