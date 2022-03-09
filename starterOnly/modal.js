@@ -82,7 +82,7 @@ modalWindow.addEventListener('submit',(e) => {
       lastError.style.display = "none";
     }
 
-//gestion erreur nom
+//gestion erreur email
     if (!emailFormat.test(emailValue)) {
       emailError.style.display ="block";
       formIsValid =false
@@ -90,7 +90,7 @@ modalWindow.addEventListener('submit',(e) => {
       emailError.style.display = "none";
     }
 
-//gestion erreur nom
+//gestion erreur birthday
     let today = new Date()
     console.log(today);
     console.log(birthValue);
@@ -101,22 +101,22 @@ modalWindow.addEventListener('submit',(e) => {
     else{
       birthDateError.style.display = "none";
     }
-
-//gestion erreur nom
+    
+//gestion erreur nombre de participation
     if (quantityValue.length <= 0 ) {
       quantityError.style.display ="block"
       formIsValid = false
     }else{
       quantityError.style.display = "none";
     }
-//gestion erreur nom
+//gestion erreur location
     if (location1.checked || location2.checked ||location3.checked || location4.checked || location5.checked || location6.checked){
       locationsError.style.display = "none"
     }else{
       locationsError.style.display = "block"
       formIsValid =false
     }
-//gestion erreur nom
+//gestion erreur validation svg
     if(!checkbox1.checked) {
       conditionError.style.display ="block"
       formIsValid = false;
