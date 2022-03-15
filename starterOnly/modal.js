@@ -91,9 +91,6 @@ modalWindow.addEventListener('submit',(e) => {
     }
 
 //gestion erreur birthday
-    let today = new Date()
-    console.log(today);
-    console.log(birthValue);
     if (birthValue == ''){
       birthDateError.style.display ="block"
       formIsValid = false
@@ -116,7 +113,7 @@ modalWindow.addEventListener('submit',(e) => {
       locationsError.style.display = "block"
       formIsValid =false
     }
-//gestion erreur validation svg
+//gestion erreur validation condition
     if(!checkbox1.checked) {
       conditionError.style.display ="block"
       formIsValid = false;
@@ -136,6 +133,13 @@ modalWindow.addEventListener('submit',(e) => {
     }
   })
 
+//faire apparaitre le message de remerciment apres submission
+function validThanks(e){
+  e.preventDefault()
+  modalWindow.style.display ="none"
+  thankMessage.style.display ="block"
+}
+
 //fermerture du message remerciment et reset du formulaire sans les valeurs
   closeThanks.addEventListener('click',function () {
   modalbg.style.display = "none"
@@ -144,9 +148,3 @@ modalWindow.addEventListener('submit',(e) => {
   modalWindow.reset()
 })
 
-//faire apparaitre le message de remerciment apres submission
-function validThanks(e){
-  e.preventDefault()
-  modalWindow.style.display ="none"
-  thankMessage.style.display ="block"
-}

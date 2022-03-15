@@ -528,6 +528,8 @@ footer {
     font-size: 5rem;
   }
 }
+
+/*error */
 .error {
   font-size: 1rem;
   color: red;
@@ -542,7 +544,7 @@ footer {
 #errorRadio {
   display: none;
 }
-
+/*Thanks message*/
 #thank {
   display: none;
   text-align: center;
